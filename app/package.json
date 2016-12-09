@@ -1,0 +1,24 @@
+{
+  "name": "googlestocktest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "acidlabs",
+    "test",
+    "heroku"
+  ],
+  "license": "MIT",
+  "author": "Rodrigo Navarro | 2016",
+  "license": "ISC",
+  "dependencies": {
+    "hapi": "^16.0.1",
+    "inert": "^4.0.3",
+    "redis": "^2.6.3",
+    "request": "^2.79.0",
+    "socket.io": "^1.7.1"
+  }
+}

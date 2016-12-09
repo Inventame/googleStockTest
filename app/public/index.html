@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Google Finance Test</title>
+		<script src="http://acidlabstest.heroku.com/socket.io/socket.io.js"></script>
+		<style>
+			html, body, #app{
+				font-family: Arial;
+				font-size: 1em;
+				width: 100%;
+				height: 100%;
+				margin: 0px;
+				padding: 0px;
+			}
+			tbody tr:nth-child(odd) {
+				background-color: #ccc;
+			}
+			@keyframes pulse{
+				0%{ opacity: 1; }
+				100%{ opacity: 0.3; }
+			}
+			.btn{
+				padding: 8px;
+				color: #fff;
+				background-color: blue;
+				text-align: center;
+				text-decoration: none;
+				margin-top: 15px;
+			}
+			.spinner__dot{
+				animation-name: pulse;
+			    animation-duration: 1s;
+			    animation-timing-function: ease-in-out;
+			    animation-delay: initial;
+			    animation-iteration-count: infinite;
+			    animation-direction: initial;
+			    animation-fill-mode: both;
+			    animation-play-state: initial;
+			}
+			.spinner {
+			    position: relative;
+			    display: inline-block;
+			    vertical-align: middle;
+			    height: 7px;
+			}
+			.spinner i.spinner__dot {
+				margin: 3px;
+			    vertical-align: top;
+			    display: inline-block;
+			    width: 7px;
+			    height: 7px;
+			    border-radius: 50%;
+			    background: #7D7D8E;
+			    -webkit-animation: pulse 1s infinite ease-in-out;
+			    -moz-animation: pulse 1s infinite ease-in-out;
+			    animation: pulse 1s infinite ease-in-out;
+			    -webkit-animation-fill-mode: both;
+			    -moz-animation-fill-mode: both;
+			    animation-fill-mode: both;
+			}
+			.spinner i.spinner__dot.spinner__dot--one {
+			    float: left;
+			    -webkit-animation-delay: -.32s;
+			    -moz-animation-delay: -.32s;
+			    animation-delay: -.32s;
+			}
+			.spinner i.spinner__dot.spinner__dot--two {
+			    -webkit-animation-delay: -.16s;
+			    -moz-animation-delay: -.16s;
+			    animation-delay: -.16s;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div style="display:flex; justify-content:center">
+			<div class="spinner"><i class="spinner__dot spinner__dot--one"></i><i class="spinner__dot spinner__dot--two"></i><i class="spinner__dot spinner__dot--three"></i></div>
+			</div>
+		</div>
+	</body>
+	<script type="application/javascript" src="js/app.min.js"></script>
+</html>
