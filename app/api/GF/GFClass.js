@@ -2,7 +2,7 @@ const request = require('request')
 const crypto = require('crypto')
 //const redis = require('redis').createClient(process.env.REDIS_URL || 'redis://h:p31ikpe4uv5no2d3l0eqojlajc3@ec2-54-235-99-108.compute-1.amazonaws.com:14839')
 const redis = require('redis').createClient(process.env.REDIS_URL)
-//redis.flushdb()
+redis.flushdb()
 redis.on('error', _error=>{
 	console.log('redis error')
 })
