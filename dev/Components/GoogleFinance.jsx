@@ -29,7 +29,6 @@ export default class GoogleFinance extends Component{
 			this.__socket.on( 'status', this.__monitorStatus )
 			this.setState({error: null, connected: true})
 		}catch( _error ){
-			console.error( _error )
 			this.setState({error: _error.message})
 			setTimeout( this.__connect, 1 )
 		}

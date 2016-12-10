@@ -16,10 +16,6 @@ export default class ChannelHistory extends Component{
 		this.setState({ channel: this.props.params.channel })
 	}
 
-	componentWillReceiveProps( _props ){
-		console.log('reciviendo', _props)
-	}
-
 	render(){
 		const { channels } = this.props.store
 		const channel = channels.get( this.state.channel ) || {}

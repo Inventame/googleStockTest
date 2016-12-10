@@ -22,7 +22,6 @@ exports.register = ( _server, _options, _next ) => {
     			} )
     		})
     		.catch( _error => {
-    			console.log( 'error', _error )
     			_socket.emit( 'status', { error: _error } )
     		} )
     })

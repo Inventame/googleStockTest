@@ -14,6 +14,9 @@
   "license": "MIT",
   "author": "Rodrigo Navarro | 2016",
   "license": "ISC",
+  "engines": {
+    "node": "5.7.1"
+  },
   "dependencies": {
     "hapi": "^16.0.1",
     "inert": "^4.0.3",

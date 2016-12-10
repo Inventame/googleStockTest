@@ -5,8 +5,7 @@ const server = new Hapi.Server()
 const Inert = require('inert')
 const ApiGF = require('./api/GF')
 
-server.connection({ port: process.env.PORT, labels: ['api'] })
-//server.connection({ port: 3001, labels: ['api'] })
+server.connection({ port: process.env.PORT })
 
 server.register( Inert, _err => {
 
@@ -34,5 +33,5 @@ server.start( _err => {
 
     if( _err ){ throw _err }
 
-    console.log(`Server running at: ${server.select('api').info.uri}`)
+    console.log(`Server running at: ${server.info.uri}`)
 });

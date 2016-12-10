@@ -71,7 +71,6 @@ module.exports = function( _io ){
 				this.__lastStatus.response[_channel.t] = _data
 			}
 			if( publish && Object.keys( data ).length > 0 ){
-				//console.log( 'update', _channel.t )
 				this.__io.emit('status', {channel: _channel.t, company: company[_channel.t], datasource: data})
 			}
 		} )
@@ -107,10 +106,6 @@ module.exports = function( _io ){
 				this.__io.emit( 'status', {error: _error} )
 				setTimeout( this.monitoringStatus, 1000 )
 			})
-	}
-
-	this.checkStatus = ()=>{
-		console.log('checking')
 	}
 
 }
