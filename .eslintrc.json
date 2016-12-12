@@ -1,0 +1,14 @@
+{
+    "extends": "airbnb-base",
+    "installedESLint": true,
+    "parser": "babel-eslint",
+	"parserOptions": {
+		"sourceType": "module",
+		"allowImportExportEverywhere": false
+	},
+    "plugins": [
+        "react",
+        "jsx-a11y",
+        "import"
+    ]
+}

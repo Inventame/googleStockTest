@@ -1,12 +1,12 @@
-import { computed, action, observable, map } from "mobx"
+import { computed, action, observable, map } from 'mobx';
 
-class GFStore{
+class GFStore {
 	@observable channels = map()
-	@action setChannel = ( _channel, _company, _data ) => {
-		this.channels.set( _channel, {company: _company, data: _data} )
+	@action setChannel = (_channel, _company, _data) => {
+		this.channels.set(_channel, { company: _company, data: _data });
 	}
 }
 
-var gfStore = window.store = new GFStore()
+const gfStore = window.store = new GFStore();
 
-export default gfStore
+export default gfStore;

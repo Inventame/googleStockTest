@@ -1,32 +1,33 @@
-const GF = require('./GFClass')
+const GF = require('./GFClass');
+
 const company = {
-	ABC: 'AmerisourceBergen Corp.',
-	AAPL: 'Apple Inc.',
-	MSFT: 'Microsoft Corporation',
-	TSLA: 'Tesla Motors Inc.',
-	F: 'Ford Motor Company'
-}
+  ABC: 'AmerisourceBergen Corp.',
+  AAPL: 'Apple Inc.',
+  MSFT: 'Microsoft Corporation',
+  TSLA: 'Tesla Motors Inc.',
+  F: 'Ford Motor Company',
+};
 
-exports.register = ( _server, _options, _next ) => {
+exports.register = (_server, _options, _next) => {
+  const io = require('socket.io')(_server.select('api').listener);
 
-    var io = require('socket.io')( _server.select('api').listener )
-    var gf = new GF( io )
-    gf.monitoringStatus()
+  const gf = new GF(io);
 
-    io.on('connection', _socket => {
-    	gf.getLastStatus()
-    		.then( _status => {
-    			var channels = Object.keys( _status.response )
-    			channels.map( _item =>{
-    				_socket.emit( 'status', {channel: _item, company: company[_item], datasource: _status.response[_item]} )
-    			} )
-    		})
-    		.catch( _error => {
-    			_socket.emit( 'status', { error: _error } )
-    		} )
-    })
+  gf.monitoringStatus();
 
-    _next()
-}
+  io.on('connection', (_socket) => {
+  	gf.getLastStatus()
+    	.then((_status) => {
+  			const channels = Object.keys(_status.response);
+  			channels.map((item) => {
+  				_socket.emit('status', { channel: item, company: company[item], datasource: _status.response[item] });
+  			});
+  		})
+  		.catch((_error) => {
+  			_socket.emit('status', { error: _error });
+  		});
+  });
+  _next();
+};
 
-exports.register.attributes = { name: 'api-ws-google-finance' }
+exports.register.attributes = { name: 'api-ws-google-finance' };

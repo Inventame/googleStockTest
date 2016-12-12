@@ -1,37 +1,35 @@
-'use strict';
+const Hapi = require('hapi');
 
-const Hapi = require('hapi')
-const server = new Hapi.Server()
-const Inert = require('inert')
-const ApiGF = require('./api/GF')
+const server = new Hapi.Server();
 
-server.connection({ port: process.env.PORT, labels: ['api'] })
+const Inert = require('inert');
 
-server.register( Inert, _err => {
+const ApiGF = require('./api/GF');
 
-    if( _err ){ throw _err }
+server.connection({ port: process.env.PORT, labels: ['api'] });
 
-    server.route({
-        method: 'GET',
-        path: '/{param*}',
-        handler: {
-            directory: {
-                path: 'public'
-            }
-        }
-    })
+server.register(Inert, (_err) => {
+  if (_err) {
+    throw _err;
+  }
 
-})
+  server.route({
+    method: 'GET',
+    path: '/{param*}',
+    handler: {
+      directory: {
+        path: 'public',
+      },
+    },
+  });
+});
 
-server.register( ApiGF, _err => {
+server.register(ApiGF, (_err) => {
+  if (_err) { throw _err; }
+});
 
-    if( _err ){ throw _err }
+server.start((_err) => {
+  if (_err) { throw _err; }
 
-})
-
-server.start( _err => {
-
-    if( _err ){ throw _err }
-
-    console.log(`Server running at: ${server.select('api').info.uri}`)
+  console.log(`Server running at: ${server.select('api').info.uri}`);
 });
